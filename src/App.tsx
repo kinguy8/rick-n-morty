@@ -1,26 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+import { ApolloProvider } from '@apollo/client';
 import './App.css';
+import client from './apollo/client/Client';
+import GlobalStyle from './components/theme/GlobaStyle';
+import Search from './components/Search/Search';
+import styled from 'styled-components';
 
-function App() {
+const Container = styled.div`
+  margin-top: 10vh;
+`;
+
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <ApolloProvider client={client}>
+        <GlobalStyle />
+        <Search />
+      </ApolloProvider>
+    </Container>
   );
-}
+};
 
 export default App;
