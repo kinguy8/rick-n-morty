@@ -5,19 +5,27 @@ import client from './apollo/client/Client';
 import GlobalStyle from './components/theme/GlobaStyle';
 import Search from './components/Search/Search';
 import styled from 'styled-components';
+import Reducer from './reducer/Reducer';
+import { initState } from './constants/Constants';
+import Context from './context/Context';
+import ListItems from './components/ListItems/ListItems';
 
 const Container = styled.div`
   margin-top: 10vh;
 `;
 
 const App: React.FC = () => {
+  const [state, dispatch] = React.useReducer(Reducer, initState);
   return (
-    <Container>
-      <ApolloProvider client={client}>
-        <GlobalStyle />
-        <Search />
-      </ApolloProvider>
-    </Container>
+    <Context.Provider value={{ state, dispatch }}>
+      <Container>
+        <ApolloProvider client={client}>
+          <GlobalStyle />
+          <Search />
+          <ListItems />
+        </ApolloProvider>
+      </Container>
+    </Context.Provider>
   );
 };
 

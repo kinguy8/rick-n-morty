@@ -2,10 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import { useQuery } from '@apollo/client';
 import { GET_CHARACTER_LIST } from '../../apollo/gql/gql';
+import Context from '../../context/Context';
+import { IContextProps } from '../../types/Types';
+import { TEST } from '../../constants/Constants';
 
 const SearchWrapper = styled.div`
-  width: 100%;
-  height: 6vh;
+  width: 810px;
+  height: 80px;
 `;
 const InputText = styled.input`
   width: 100%;
@@ -21,16 +24,19 @@ const InputText = styled.input`
 `;
 
 const Search: React.FC = () => {
+  const ref = React.useRef<Array<any>>();
   const [search, setSearch] = React.useState<string>('');
+  const context: IContextProps = React.useContext(Context);
+  console.log('state', context.state);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    console.log('value ', event.target.value);
     setSearch((prev) => event.target.value);
   };
-  const { loading, error, data } = useQuery(GET_CHARACTER_LIST, {
+  useQuery(GET_CHARACTER_LIST, {
     variables: { name: search },
     skip: search.length < 2,
+    onCompleted: (result) => context.dispatch({ type: TEST, payload: result.characters?.results }),
   });
-  console.log('data ', data);
+
   return (
     <SearchWrapper>
       <InputText placeholder="Введите текст" onChange={onChange} value={search} />

@@ -6,6 +6,7 @@ export const GET_CHARACTER_LIST = gql`
       results {
         name
         image
+        id
       }
     }
   }
