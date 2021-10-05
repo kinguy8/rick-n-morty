@@ -9,6 +9,7 @@ import Reducer from './reducer/Reducer';
 import { initState } from './constants/Constants';
 import Context from './context/Context';
 import ListItems from './components/ListItems/ListItems';
+import Party from './components/Party/Party';
 
 const Container = styled.div`
   margin-top: 10vh;
@@ -23,6 +24,7 @@ const App: React.FC = () => {
           <GlobalStyle />
           <Search />
           <ListItems />
+          <Party />
         </ApolloProvider>
       </Container>
     </Context.Provider>
