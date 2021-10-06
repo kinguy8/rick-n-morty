@@ -8,7 +8,6 @@ export const Card = styled.div`
   min-height: 220x;
   height: 220px;
   text-align: center;
-  background-color: red;
   :nth-child(4n + 4) {
     margin-right: 0;
   }

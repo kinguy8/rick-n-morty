@@ -1,30 +1,24 @@
 import React from 'react';
-import styled from 'styled-components';
-import Context from '../../context/Context';
 import Item from '../Item/Item';
-import { IArrayItem } from '../../types/Types';
+import { IArrayItem, ISearchList } from '../../types/Types';
 import { buildSearchResultBySize } from '../utils/Utils';
+import { Result, Grid } from './ListItemsStyle';
 
-const Result = styled.div`
-  width: 810px;
-  height: 500px;
-  display: flex;
-  justify-content: center;
-`;
-
-const ListItems: React.FC = () => {
-  const context = React.useContext(Context);
-  const data: Array<{}> = context.state.data;
+const ListItems: React.FC<ISearchList> = ({ test, setMorty, setRick }) => {
+  const data: Array<{}> = test;
   const initArray: Array<{}> = buildSearchResultBySize(data);
   return (
     <Result>
-      <div className="three-col-grid">
+      <Grid>
         {initArray.map((value: IArrayItem) => {
-          return <Item key={value.id} value={value} />;
+          return <Item key={value.id} value={value} setMorty={setMorty} setRick={setRick} />;
         })}
-      </div>
+      </Grid>
     </Result>
   );
 };
 
-export default ListItems;
+export default React.memo(ListItems, (prevProps, nextProps) => {
+  console.log(prevProps, nextProps);
+  return false;
+});
