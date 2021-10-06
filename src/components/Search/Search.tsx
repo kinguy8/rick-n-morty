@@ -5,7 +5,6 @@ import { ISearchProps } from '../../types/Types';
 import { SearchWrapper, InputText } from './SearchStyle';
 
 const Search: React.FC<ISearchProps> = ({ setResult }) => {
-  console.log('search render');
   const [search, setSearch] = React.useState<string>('');
   const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch(event.target.value);
@@ -24,10 +23,4 @@ const Search: React.FC<ISearchProps> = ({ setResult }) => {
   );
 };
 
-export default React.memo<ISearchProps>(Search, (prevProps, nextProps): boolean => {
-  console.log(prevProps, nextProps);
-  if (prevProps === nextProps) {
-    return true;
-  }
-  return false;
-});
+export default Search;

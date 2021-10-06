@@ -12,7 +12,6 @@ import {
 } from './PartyStyle';
 
 const Party: React.FC<IParty> = ({ rick, morty }) => {
-  console.log('part render');
   return (
     <PartyContainer>
       <PartyHeader>
