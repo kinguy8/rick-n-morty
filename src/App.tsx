@@ -16,13 +16,12 @@ const App: React.FC = () => {
   const [value, setValue] = React.useState<Array<{}>>([]);
   const [rick, setRick] = React.useState<string>('');
   const [morty, setMorty] = React.useState<string>('');
-
   return (
     <Container>
       <ApolloProvider client={client}>
         <GlobalStyle />
-        <Search result={value} setResult={setValue} />
-        <ListItems test={value} setRick={setRick} setMorty={setMorty} rick={rick} morty={morty} />
+        <Search setResult={setValue} />
+        <ListItems test={value} setRick={setRick} setMorty={setMorty} />
         <Party morty={morty} rick={rick} />
       </ApolloProvider>
     </Container>

@@ -12,16 +12,13 @@ export interface IKey {
   setRick: (r: string) => void;
 }
 
-export interface ISearchList {
+export interface ISearch {
   test: Array<{}>;
   setMorty: (m: string) => void;
   setRick: (r: string) => void;
-  rick: string;
-  morty: string;
 }
 
 export interface ISearchProps {
-  result: Array<{}>;
   setResult: (value: Array<{}>) => void;
 }
 

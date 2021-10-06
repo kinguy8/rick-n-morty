@@ -1,10 +1,11 @@
 import React from 'react';
 import Item from '../Item/Item';
-import { IArrayItem, ISearchList } from '../../types/Types';
+import { IArrayItem, ISearch } from '../../types/Types';
 import { buildSearchResultBySize } from '../../utils/Utils';
 import { Grid } from './ListItemsStyle';
 
-const ListItems: React.FC<ISearchList> = ({ test, setMorty, setRick }) => {
+const ListItems: React.FC<ISearch> = ({ test, setMorty, setRick }) => {
+  console.log('list');
   const data: Array<{}> = test;
   const initArray: Array<{}> = buildSearchResultBySize(data);
   return (
