@@ -3,6 +3,8 @@ import React from 'react';
 export interface IState {
   data: Array<{} | string>;
   message: string;
+  selectedRick: string;
+  selectedMorty: string;
 }
 
 export interface IActionType {

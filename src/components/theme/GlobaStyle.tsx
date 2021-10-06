@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
     font-size: 30px;
     margin: 0;
     padding: 0;
+    text-transform: uppercase;
   }
 `;
 

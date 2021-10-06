@@ -13,21 +13,14 @@ const SearchWrapper = styled.div`
 const InputText = styled.input`
   width: 100%;
   height: 100%;
-  &::placeholder {
-    color: green;
-  }
-  ::placeholder {
-  }
-  &input[type='text'] {
-    margin-left: 5vh;
-  }
+  text-indent: 30px;
 `;
 
 const Search: React.FC = () => {
+  console.log('search render');
   const ref = React.useRef<Array<any>>();
   const [search, setSearch] = React.useState<string>('');
   const context: IContextProps = React.useContext(Context);
-  console.log('state', context.state);
   const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     setSearch((prev) => event.target.value);
   };
@@ -35,13 +28,14 @@ const Search: React.FC = () => {
     variables: { name: search },
     skip: search.length < 2,
     onCompleted: (result) => context.dispatch({ type: TEST, payload: result.characters?.results }),
+    onError: () => context.dispatch({ type: TEST, payload: [] }),
   });
 
   return (
     <SearchWrapper>
-      <InputText placeholder="Введите текст" onChange={onChange} value={search} />
+      <InputText placeholder="Поиск" onChange={onChange} value={search} />
     </SearchWrapper>
   );
 };
 
-export default Search;
+export default React.memo(Search);
