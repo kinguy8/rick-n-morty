@@ -1,6 +1,6 @@
 import React from 'react';
-import Context from '../../context/Context';
-import { IContextProps } from '../../types/Types';
+import { IParty } from '../../types/Types';
+import { RICK, MORTY, PARTY } from '../../constants/Constants';
 import {
   PartyContainer,
   PartyHeaderValue,
@@ -11,22 +11,20 @@ import {
   PartyCardTitle,
 } from './PartyStyle';
 
-const Party: React.FC = () => {
-  console.log('part render');
-  const context: IContextProps = React.useContext(Context);
+const Party: React.FC<IParty> = ({ rick, morty }) => {
   return (
     <PartyContainer>
       <PartyHeader>
-        <PartyHeaderValue>PARTY</PartyHeaderValue>
+        <PartyHeaderValue>{PARTY}</PartyHeaderValue>
       </PartyHeader>
       <PartyContent>
         <PartyCard>
-          <PartyCardTitle>RICK</PartyCardTitle>
-          {context.state.selectedRick && <PartyImg src={context.state.selectedRick} />}
+          {!rick && <PartyCardTitle>{RICK}</PartyCardTitle>}
+          {rick && <PartyImg src={rick} />}
         </PartyCard>
         <PartyCard>
-          <PartyCardTitle>MORTY</PartyCardTitle>
-          {context.state.selectedMorty && <PartyImg src={context.state.selectedMorty} />}
+          {!morty && <PartyCardTitle>{MORTY}</PartyCardTitle>}
+          {morty && <PartyImg src={morty} />}
         </PartyCard>
       </PartyContent>
     </PartyContainer>

@@ -5,9 +5,6 @@ import client from './apollo/client/Client';
 import GlobalStyle from './components/theme/GlobaStyle';
 import Search from './components/Search/Search';
 import styled from 'styled-components';
-import Reducer from './reducer/Reducer';
-import { initState } from './constants/Constants';
-import Context from './context/Context';
 import ListItems from './components/ListItems/ListItems';
 import Party from './components/Party/Party';
 
@@ -16,18 +13,19 @@ const Container = styled.div`
 `;
 
 const App: React.FC = () => {
-  const [state, dispatch] = React.useReducer(Reducer, initState);
+  const [value, setValue] = React.useState<Array<{}>>([]);
+  const [rick, setRick] = React.useState<string>('');
+  const [morty, setMorty] = React.useState<string>('');
+
   return (
-    <Context.Provider value={{ state, dispatch }}>
-      <Container>
-        <ApolloProvider client={client}>
-          <GlobalStyle />
-          <Search />
-          <ListItems />
-          <Party />
-        </ApolloProvider>
-      </Container>
-    </Context.Provider>
+    <Container>
+      <ApolloProvider client={client}>
+        <GlobalStyle />
+        <Search result={value} setResult={setValue} />
+        <ListItems test={value} setRick={setRick} setMorty={setMorty} rick={rick} morty={morty} />
+        <Party morty={morty} rick={rick} />
+      </ApolloProvider>
+    </Container>
   );
 };
 

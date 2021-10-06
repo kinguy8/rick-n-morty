@@ -39,7 +39,6 @@ export const PartyCardTitle = styled.div`
   position: absolute;
   top: 150px;
   color: white;
-  text-shadow: 1px 1px 2px black;
 `;
 
 export const PartyImg = styled.img`

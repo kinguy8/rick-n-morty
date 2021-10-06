@@ -1,21 +1,21 @@
 import React from 'react';
-import { Card, Image } from './ItemStyle';
-import { IArrayItem, IContextProps, IKey } from '../../types/Types';
-import Context from '../../context/Context';
-import { SELECT_MORTY, SELECT_RICK } from '../../constants/Constants';
+import { Card, Image, CicleContainer, Cross } from './ItemStyle';
+import { IArrayItem, IKey } from '../../types/Types';
 
-const Item: React.FC<IKey> = ({ key, value }) => {
-  console.log('render');
-  const context: IContextProps = React.useContext(Context);
+const Item: React.FC<IKey> = ({ key, value, setMorty, setRick }) => {
   const selectCard = (value: IArrayItem): void => {
-    if (value.name?.toLowerCase().includes('Morty'.toLowerCase()))
-      context.dispatch({ type: SELECT_MORTY, payload: value.image });
-    if (value.name?.toLowerCase().includes('Rick'.toLowerCase()))
-      context.dispatch({ type: SELECT_RICK, payload: value.image });
+    if (value.name?.toLowerCase().includes('Morty'.toLowerCase())) setMorty(value.image);
+    if (value.name?.toLowerCase().includes('Rick'.toLowerCase())) setRick(value.image);
   };
 
+  const test = (): void => {
+    console.log('delete');
+  };
   return (
-    <Card onClick={() => selectCard(value)}>
+    <Card key={key} onClick={() => selectCard(value)}>
+      <CicleContainer onClick={test}>
+        <Cross>x</Cross>
+      </CicleContainer>
       <Image src={value.image} />
     </Card>
   );
