@@ -10,7 +10,7 @@ const Item: React.FC<IKey> = ({ key, value, setMorty, setRick }) => {
   };
 
   return (
-    <Card onClick={() => selectCard(value)}>
+    <Card key={key} onClick={() => selectCard(value)}>
       <Image src={value.image} />
     </Card>
   );

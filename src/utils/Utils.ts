@@ -1,4 +1,4 @@
-import { IArrayItem } from '../../types/Types';
+import { IArrayItem } from '../types/Types';
 
 /*
  * Method for creation new array for display
@@ -10,7 +10,7 @@ export const buildSearchResultBySize = (data: Array<{}>, size: number | string =
       const asd = (newData: Array<{}>): void => {
         const randomValue: IArrayItem = _randomValue(newData);
         if (initArray.includes(randomValue)) {
-          const index = newData.findIndex((item: IArrayItem) => item.name === randomValue.name);
+          //const index = newData.findIndex((item: IArrayItem) => item.name === randomValue.name);
           //asd(newData.splice(index, 1)); ????
         } else {
           initArray.push(randomValue);

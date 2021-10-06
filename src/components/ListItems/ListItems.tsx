@@ -1,7 +1,7 @@
 import React from 'react';
 import Item from '../Item/Item';
 import { IArrayItem, ISearchList } from '../../types/Types';
-import { buildSearchResultBySize } from '../utils/Utils';
+import { buildSearchResultBySize } from '../../utils/Utils';
 import { Result, Grid } from './ListItemsStyle';
 
 const ListItems: React.FC<ISearchList> = ({ test, setMorty, setRick }) => {

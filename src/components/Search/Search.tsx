@@ -4,11 +4,11 @@ import { GET_CHARACTER_LIST } from '../../apollo/gql/gql';
 import { ISearchProps } from '../../types/Types';
 import { SearchWrapper, InputText } from './SearchStyle';
 
-const Search: React.FC<ISearchProps> = ({ result, setResult }) => {
+const Search: React.FC<ISearchProps> = ({ setResult }) => {
   console.log('search render');
   const [search, setSearch] = React.useState<string>('');
   const onChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-    setSearch((prev) => event.target.value);
+    setSearch(event.target.value);
   };
   useQuery(GET_CHARACTER_LIST, {
     variables: { name: search },
