@@ -10,12 +10,12 @@ export interface IKey {
   value: IArrayItem;
   setMorty: (m: string) => void;
   setRick: (r: string) => void;
-  //setDeleted: (a: any) => void;
-  deleted: any;
+  newData: (a: any) => void;
+  setMyTest: (a: any) => void;
 }
 
 export interface ISearch {
-  test: Array<{}>;
+  result: Array<{}>;
   setMorty: (m: string) => void;
   setRick: (r: string) => void;
 }

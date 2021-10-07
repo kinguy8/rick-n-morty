@@ -1,21 +1,33 @@
 import React from 'react';
 import Item from '../Item/Item';
 import { IArrayItem, ISearch } from '../../types/Types';
-import { buildSearchResultBySize } from '../../utils/Utils';
+import { buildSearchResultBySize, getDifference } from '../../utils/Utils';
 import { Grid } from './ListItemsStyle';
 
-const ListItems: React.FC<ISearch> = ({ test, setMorty, setRick }) => {
-  console.log('list items');
-  const ref = React.useRef<Array<IArrayItem>>([]);
-  //const [deleted, setDeleted] = React.useState<IArrayItem[]>([]);
-  //console.log('deleted ', deleted);
-  const data: Array<{}> = test;
-  const initArray: Array<{}> = buildSearchResultBySize(data);
+const ListItems: React.FC<ISearch> = ({ result, setMorty, setRick }) => {
+  const [history, setHistory] = React.useState<Array<IArrayItem>>([]);
+  const [size, setSize] = React.useState<Array<IArrayItem>>([]);
+  const ref = React.useRef<Array<IArrayItem>>();
+  let data: IArrayItem[] = result;
+  if (history.length) {
+    data = getDifference(result, history);
+  }
+  ref.current = buildSearchResultBySize(data, 6, size.length);
+  React.useEffect(() => {
+    setSize([]);
+  }, [result]);
   return (
     <Grid>
-      {initArray.map((value: IArrayItem) => {
+      {ref.current.map((value: IArrayItem) => {
         return (
-          <Item key={value.id} value={value} setMorty={setMorty} setRick={setRick} deleted={ref} />
+          <Item
+            key={value.id}
+            value={value}
+            setMorty={setMorty}
+            setRick={setRick}
+            newData={setHistory}
+            setMyTest={setSize}
+          />
         );
       })}
     </Grid>
