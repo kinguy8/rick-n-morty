@@ -7,25 +7,25 @@ import Search from './components/Search/Search';
 import styled from 'styled-components';
 import ListItems from './components/ListItems/ListItems';
 import Party from './components/Party/Party';
+import Input from './components/Input/Input';
 
 const Container = styled.div`
   margin-top: 10vh;
 `;
 
 const App: React.FC = () => {
-  const [value, setValue] = React.useState<Array<{}>>([]);
-  const [rick, setRick] = React.useState<string>('');
-  const [morty, setMorty] = React.useState<string>('');
+  const [value, setValue] = React.useState<string>('');
   return (
     <Container>
       <ApolloProvider client={client}>
         <GlobalStyle />
-        <Search setResult={setValue} />
-        <ListItems test={value} setRick={setRick} setMorty={setMorty} />
-        <Party morty={morty} rick={rick} />
+        <Input value={value} setValue={setValue} />
+        <Search inputValue={value} />
       </ApolloProvider>
     </Container>
   );
 };
 
 export default App;
+//
+//

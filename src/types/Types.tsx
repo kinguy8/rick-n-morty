@@ -10,6 +10,8 @@ export interface IKey {
   value: IArrayItem;
   setMorty: (m: string) => void;
   setRick: (r: string) => void;
+  //setDeleted: (a: any) => void;
+  deleted: any;
 }
 
 export interface ISearch {
@@ -19,10 +21,15 @@ export interface ISearch {
 }
 
 export interface ISearchProps {
-  setResult: (value: Array<{}>) => void;
+  inputValue: string;
 }
 
 export interface IParty {
   rick: string;
   morty: string;
+}
+
+export interface IInput {
+  value: string;
+  setValue: (v: string) => void;
 }
