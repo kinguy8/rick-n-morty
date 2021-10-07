@@ -47,5 +47,6 @@ export const CicleContainer = styled.div`
 export const Cross = styled.div`
   display: flex;
   align-items: center;
+  opacity: 0.4;
   font-size: 15px;
 `;

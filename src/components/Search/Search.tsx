@@ -6,9 +6,9 @@ import ListItems from '../ListItems/ListItems';
 import Party from '../Party/Party';
 
 const Search: React.FC<ISearchProps> = ({ inputValue }) => {
-  const [rick, setRick] = React.useState<string>('');
-  const [morty, setMorty] = React.useState<string>('');
-  const [result, setResult] = React.useState<Array<{}>>([]);
+  const [rick, setRick] = React.useState<string>(''); // selected rick data
+  const [morty, setMorty] = React.useState<string>(''); // selected morty data
+  const [result, setResult] = React.useState<Array<{}>>([]); // data of search result
   useQuery(GET_CHARACTER_LIST, {
     variables: { name: inputValue },
     skip: inputValue.length < 2,

@@ -12,7 +12,7 @@ const Container = styled.div`
 `;
 
 const App: React.FC = () => {
-  const [value, setValue] = React.useState<string>('');
+  const [value, setValue] = React.useState<string>(''); // input value
   return (
     <Container>
       <ApolloProvider client={client}>

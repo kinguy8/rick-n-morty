@@ -5,7 +5,8 @@ import { buildSearchResultBySize, getDifference } from '../../utils/Utils';
 import { Grid } from './ListItemsStyle';
 
 const ListItems: React.FC<ISearch> = ({ result, setMorty, setRick }) => {
-  const [history, setHistory] = React.useState<Array<IArrayItem>>([]);
+  const [history, setHistory] = React.useState<Array<IArrayItem>>([]); // List of deleted data
+  console.log('Removed items History: ', history);
   const [size, setSize] = React.useState<Array<IArrayItem>>([]);
   const ref = React.useRef<Array<IArrayItem>>();
   let data: IArrayItem[] = result;
