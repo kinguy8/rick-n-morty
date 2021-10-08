@@ -11,7 +11,7 @@ export interface IKey {
   setMorty: (m: string) => void;
   setRick: (r: string) => void;
   newData: (a: any) => void;
-  setMyTest: (a: any) => void;
+  setSize: (a: any) => void;
 }
 
 export interface ISearch {
@@ -32,4 +32,19 @@ export interface IParty {
 export interface IInput {
   value: string;
   setValue: (v: string) => void;
+}
+
+export interface IModalProps {
+  active: boolean;
+  setActive: (v: boolean) => void;
+  history?: Array<IArrayItem>;
+}
+
+export interface IModalStyledProps {
+  active: boolean;
+}
+
+export interface IModalCard {
+  name: string;
+  image: string;
 }

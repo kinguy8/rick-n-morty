@@ -12,8 +12,9 @@ const Search: React.FC<ISearchProps> = ({ inputValue }) => {
   useQuery(GET_CHARACTER_LIST, {
     variables: { name: inputValue },
     skip: inputValue.length < 2,
-    onCompleted: (result) => setResult(result.characters?.results),
+    onCompleted: (result) => setResult(result.characters.results),
     onError: () => setResult([]),
+    pollInterval: 300,
   });
 
   return (

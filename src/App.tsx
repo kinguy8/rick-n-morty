@@ -8,7 +8,7 @@ import styled from 'styled-components';
 import Input from './components/Input/Input';
 
 const Container = styled.div`
-  margin-top: 10vh;
+  margin-top: 5vh;
 `;
 
 const App: React.FC = () => {
